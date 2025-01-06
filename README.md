@@ -1,4 +1,4 @@
 Grupo: 
-Celenny Sousa
-Fhilipe Coelho
-Richelle kim
+Celenny Sousa,
+Fhilipe Coelho,
+Richelle kim.
