@@ -1,5 +1,5 @@
-import { Account } from '../../../domain/entities/Account'
-import { AccountRepository } from '../../../domain/interfaces/AccountRepository'
+import { User } from '../../../domain/entities/User'
+import { UserRepository } from '../../../domain/interfaces/UserRepository'
 
 interface SignupRequest {
   name: string
@@ -10,15 +10,15 @@ interface SignupRequest {
 }
 
 export class SignupUseCase {
-  constructor(private accountRepository: AccountRepository) {}
+  constructor(private accountRepository: UserRepository) {}
 
   async execute(request: SignupRequest): Promise<void> {
-    const existingAccount = await this.accountRepository.findByEmail(request.email)
-    if (existingAccount) {
+    const existingUser = await this.accountRepository.findByEmail(request.email)
+    if (existingUser) {
       throw new Error('Email already in use')
     }
 
-    const account = new Account(
+    const account = new User(
       this.generateId(),
       request.name,
       request.email,
@@ -31,6 +31,6 @@ export class SignupUseCase {
   }
 
   private generateId(): string {
-    return 'unique-id' 
+    return 'unique-id'
   }
 }

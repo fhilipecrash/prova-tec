@@ -1,9 +1,9 @@
 import { SignupUseCase } from '../src/application/use-cases/signup/SignupUseCase'
-import { InMemoryAccountRepository } from '../src/infra/repositories/InMemoryAccountRepository'
+import { InMemoryUserRepository } from '../src/infra/repositories/InMemoryUserRepository'
 
 describe('SignupUseCase', () => {
   it('should create a new account', async () => {
-    const accountRepository = new InMemoryAccountRepository()
+    const accountRepository = new InMemoryUserRepository()
     const signupUseCase = new SignupUseCase(accountRepository)
 
     await signupUseCase.execute({
@@ -19,7 +19,7 @@ describe('SignupUseCase', () => {
   })
 
   it('should not allow duplicate emails', async () => {
-    const accountRepository = new InMemoryAccountRepository()
+    const accountRepository = new InMemoryUserRepository()
     const signupUseCase = new SignupUseCase(accountRepository)
 
     await signupUseCase.execute({
