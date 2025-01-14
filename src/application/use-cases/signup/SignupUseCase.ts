@@ -7,6 +7,8 @@ interface SignupRequest {
   cpf: string
   password: string
   carPlate?: string
+  isPassenger: boolean
+  isDriver: boolean
 }
 
 export class SignupUseCase {
@@ -24,6 +26,8 @@ export class SignupUseCase {
       request.email,
       request.cpf,
       request.password,
+      request.isPassenger,
+      request.isDriver,
       request.carPlate,
     )
 

@@ -11,6 +11,8 @@ describe('SignupUseCase', () => {
       email: 'john@example.com',
       cpf: '12345678901',
       password: 'securepassword',
+      isPassenger: true,
+      isDriver: false,
     })
 
     const account = await accountRepository.findByEmail('john@example.com')
@@ -27,6 +29,8 @@ describe('SignupUseCase', () => {
       email: 'john@example.com',
       cpf: '12345678901',
       password: 'securepassword',
+      isPassenger: true,
+      isDriver: false,
     })
 
     await expect(
@@ -35,6 +39,8 @@ describe('SignupUseCase', () => {
         email: 'john@example.com',
         cpf: '10987654321',
         password: 'anotherpassword',
+        isPassenger: true,
+        isDriver: false,
       }),
     ).rejects.toThrow('Email already in use')
   })
